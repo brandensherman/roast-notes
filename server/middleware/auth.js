@@ -13,10 +13,10 @@ const protect = async (req, res, next) => {
       req.headers.authorization &&
       req.headers.authorization.startsWith('Bearer')
     ) {
-      // The Bearer token will be split to get just the token
+      // If the token is stored in headers - set token to headers - Bearer token in header will be split to get just the token
       token = req.headers.authorization.split(' ')[1];
     } else if (req.cookies.token) {
-      // if the token is contained in cookies
+      // If the token is contained in cookie - set token to cookie
       token = req.cookies.token;
     }
 
@@ -48,7 +48,7 @@ const protect = async (req, res, next) => {
 const authorize = (...roles) => {
   return (req, res, next) => {
     if (!roles.includes(req.user.role)) {
-      // If not return a 403 forbidden
+      // If not authorized return a 403 forbidden
       return next(
         new ErrorResponse(
           `User role ${req.user.role} is unauthorized to access this route`,
