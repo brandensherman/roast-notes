@@ -25,7 +25,7 @@ router.get(
   }
 );
 
-// Logout current user
+// Logout current user / clear cookie
 // GET /api/auth/logout
 // Private
 router.get(

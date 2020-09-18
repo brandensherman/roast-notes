@@ -6,12 +6,36 @@
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
   <title>Document</title>
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
    body {
-     font-family: "Source Sans Pro", sans-serif;
+    font-family: "Source Sans Pro", sans-serif;
+   }
+
+   .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   }
+
+   .container h1 {
+     margin: 1rem 0;
+   }
+
+   .container p {
+     margin-bottom: .5rem;
    }
   </style>
 </head>
 <body>
-  <h1>Roast Notes API</h1>
+<div class="container">  
+  <h1>Welcome to the Roast Notes API</h1>
+  <p>Check out the documentation by visiting the link below:</p>
+  <a href="https://documenter.getpostman.com/view/11640959/TVKBXdCQ">Roast Notes Documentation</a>
+</div>
 </body>
 </html>
