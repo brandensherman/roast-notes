@@ -1,18 +1,40 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { register } from '../reducers/userAuthReducer';
 
-const Register = () => {
+const RegisterScreen = ({ location, history }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
+  const redirect = location.search ? location.search.split('=')[1] : '/';
+
+  const dispatch = useDispatch();
+
+  const userRegister = useSelector((state) => state.user);
+  const { loading, error, userInfo } = userRegister;
+
+  useEffect(() => {
+    if (userInfo) {
+      history.push(redirect);
+    }
+  }, [history, userInfo, redirect]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (password !== confirmPassword) {
+      console.log('passwords do not match');
+    } else {
+      dispatch(register(name, email, password));
+    }
   };
 
   return (
-    <div className='form-container'>
-      <form onSubmit={handleSubmit}>
+    <div className='auth-container'>
+      <form className='form-container' onSubmit={handleSubmit}>
         <div className='form-item'>
           <label htmlFor='name'>Name</label>
           <input
@@ -49,7 +71,7 @@ const Register = () => {
             type='password'
             name='confirmPassword'
             placeholder='Confirm password'
-            value={password}
+            value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
         </div>
@@ -62,4 +84,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default RegisterScreen;
