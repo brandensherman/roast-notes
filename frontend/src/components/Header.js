@@ -14,30 +14,27 @@ const Header = () => {
   };
 
   return (
-    <nav className='container'>
+    <nav className='nav-container'>
       <Link to='/'>
         <h1 className='logo'>Roast Notes</h1>
       </Link>
 
-      <div className='nav-buttons'>
+      <div className='nav-links'>
         {userInfo ? (
           <>
             <Link to='/register'>
-              <button
-                className='btn btn-nav btn-logout'
-                onClick={logoutHandler}
-              >
+              <a className='btn btn-nav btn-logout' onClick={logoutHandler}>
                 Logout
-              </button>
+              </a>
             </Link>
           </>
         ) : (
           <>
-            <Link to='/login'>
-              <button className='btn btn-nav btn-login'>Login</button>
+            <Link to='/login' className='nav-item'>
+              Login
             </Link>
-            <Link to='/register'>
-              <button className='btn btn-nav btn-register'>Register</button>
+            <Link to='/register' className='nav-item'>
+              Register
             </Link>
           </>
         )}

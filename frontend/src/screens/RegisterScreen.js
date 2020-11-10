@@ -77,7 +77,7 @@ const RegisterScreen = ({ location, history }) => {
         </div>
 
         <button className='btn btn-submit' type='submit'>
-          Sign In
+          Register
         </button>
       </form>
     </div>

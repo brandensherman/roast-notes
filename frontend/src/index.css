@@ -15,7 +15,6 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 0 4rem;
-  margin-top: 2rem;
 }
 
 a {
@@ -24,6 +23,7 @@ a {
 }
 
 .logo {
+  color: #000;
   font-size: 2rem;
 }
 
@@ -32,31 +32,42 @@ a {
   cursor: pointer;
   padding: 0.4rem 1rem;
   border-radius: 5px;
-  border: 2px solid #444;
+  border: 2px solid #222;
   background-color: #fff;
   transition: all ease 0.3s;
 }
 
-.btn-nav {
-  font-size: 0.9rem;
+.btn:focus {
+  outline: none;
 }
 
-.btn-nav:last-child {
+.btn-submit:hover {
+  color: #fff;
+  background-color: #222;
+}
+
+/* NAVBAR */
+
+.nav-container {
+  background-color: #fed9b7;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 4rem;
+}
+
+.nav-item {
+  color: #000;
+  font-size: 1.1rem;
+  border-bottom: 2px transparent solid;
+  transition: border-color 0.5s;
+}
+.nav-item:last-child {
   margin-left: 1rem;
 }
 
-.btn-login:hover,
-.btn-submit:hover {
-  color: #fff;
-  background-color: #444;
-}
-.btn-register {
-  color: #fff;
-  background-color: #444;
-}
-.btn-register:hover {
-  color: #fff;
-  background-color: #555;
+.nav-item:hover {
+  border-color: #000;
 }
 
 /* FORMS */
@@ -66,8 +77,6 @@ a {
 }
 
 .form-container {
-  border: 2px solid #000;
-  border-radius: 5px;
   padding: 6rem 6rem;
 }
 
@@ -75,4 +84,17 @@ a {
   display: flex;
   flex-direction: column;
   margin-bottom: 1rem;
+  width: 300px;
+}
+
+.form-item input {
+  background-color: #f1f1f1;
+  border: none;
+  padding: 12px 15px;
+  margin: 8px 0;
+  width: 100%;
+}
+
+.form-item input:focus {
+  outline: none;
 }
