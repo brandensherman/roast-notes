@@ -22,7 +22,7 @@ const Header = () => {
       <div className='nav-links'>
         {userInfo ? (
           <>
-            <Link to='/register' className='nav-item' onClick={logoutHandler}>
+            <Link to='/' className='nav-item' onClick={logoutHandler}>
               Logout
             </Link>
           </>

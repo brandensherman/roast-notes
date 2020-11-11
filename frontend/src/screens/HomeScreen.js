@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Loader from '../components/Loader';
+import Message from '../components/Message';
+import Entry from '../components/Entry';
 import { fetchEntryList } from '../reducers/entryListReducer';
 
 const HomeScreen = () => {
@@ -17,21 +19,20 @@ const HomeScreen = () => {
   }, [dispatch]);
 
   return (
-    <div className='container'>
+    <div className='home-container'>
       {loading ? (
         <Loader />
+      ) : error ? (
+        <Message> {error}</Message>
       ) : userInfo && entryList ? (
-        <div>
+        <div className='entry-list-container'>
           <h2>All Notes</h2>
           {entries.map((entry) => (
-            <div className='entry-container' key={entry._id}>
-              <h3>{entry.name}</h3>
-              <p>{entry.description}</p>
-            </div>
+            <Entry entry={entry} key={entry._id} />
           ))}
         </div>
       ) : (
-        <h1>Welcome to Roast Notes</h1>
+        <h1 className='welcome-title'>Welcome to Roast Notes</h1>
       )}
     </div>
   );

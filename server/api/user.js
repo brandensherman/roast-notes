@@ -27,7 +27,7 @@ router.get(
 router.get(
   '/entries/:entryId',
   protect,
-  authorize('user'),
+  authorize('user', 'admin'),
   async (req, res, next) => {
     try {
       const entry = await Entry.findOne({
@@ -44,7 +44,7 @@ router.get(
         );
       }
 
-      res.status(200).json({ success: true, data: entry });
+      res.status(200).json({ success: true, entry });
     } catch (error) {
       next(error);
     }
@@ -54,18 +54,23 @@ router.get(
 // Create New Entry for Current User
 // POST /api/user/entries
 // Private
-router.post('/entries', protect, authorize('user'), async (req, res, next) => {
-  try {
-    // Add user to req.body
-    req.body.user = req.user.id;
+router.post(
+  '/entries',
+  protect,
+  authorize('user', 'admin'),
+  async (req, res, next) => {
+    try {
+      // Add user to req.body
+      req.body.user = req.user.id;
 
-    const entry = await Entry.create(req.body);
+      const entry = await Entry.create(req.body);
 
-    res.status(201).json({ success: true, data: entry });
-  } catch (error) {
-    res.status(400).json({ success: false });
+      res.status(201).json({ success: true, data: entry });
+    } catch (error) {
+      res.status(400).json({ success: false });
+    }
   }
-});
+);
 
 // Update Entry for Current User
 // PUT /api/user/entries/:entryId
@@ -73,7 +78,7 @@ router.post('/entries', protect, authorize('user'), async (req, res, next) => {
 router.put(
   '/entries/:entryId',
   protect,
-  authorize('user'),
+  authorize('user', 'admin'),
   async (req, res, next) => {
     try {
       const entry = await Entry.findOne({
@@ -115,7 +120,7 @@ router.put(
 router.delete(
   '/entries/:entryId',
   protect,
-  authorize('user'),
+  authorize('user', 'admin'),
   async (req, res, next) => {
     try {
       const entry = await Entry.findOneAndDelete({

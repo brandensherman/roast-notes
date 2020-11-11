@@ -12,7 +12,6 @@ export const fetchEntryList = () => async (dispatch) => {
 
     const { data } = await axios.get('/api//user/entries');
 
-    console.log('redux --->', data.entries);
     dispatch({
       type: ENTRY_LIST_SUCCESS,
       payload: data.entries,
@@ -29,7 +28,7 @@ export const fetchEntryList = () => async (dispatch) => {
   }
 };
 
-// Product List Reducer
+// Entry List Reducer
 export const entryListReducer = (state = { entries: [] }, action) => {
   switch (action.type) {
     case ENTRY_LIST_REQUEST:
