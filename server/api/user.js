@@ -6,17 +6,20 @@ const { protect, authorize } = require('../middleware/auth');
 // Get All Entries for Current User
 // GET /api/user/entries
 // Private
-router.get('/entries', protect, authorize('user'), async (req, res, next) => {
-  try {
-    const entries = await Entry.find({ user: req.user.id });
+router.get(
+  '/entries',
+  protect,
+  authorize('user', 'admin'),
+  async (req, res, next) => {
+    try {
+      const entries = await Entry.find({ user: req.user.id });
 
-    res
-      .status(200)
-      .json({ success: true, count: entries.length, data: entries });
-  } catch (error) {
-    next(error);
+      res.status(200).json({ success: true, count: entries.length, entries });
+    } catch (error) {
+      next(error);
+    }
   }
-});
+);
 
 // Get Single Entry for Current User
 // GET /api/user/entries/:entryId
