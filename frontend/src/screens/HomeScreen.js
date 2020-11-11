@@ -19,14 +19,14 @@ const HomeScreen = () => {
   }, [dispatch]);
 
   return (
-    <div className='home-container'>
+    <div className='container'>
       {loading ? (
         <Loader />
       ) : error ? (
         <Message> {error}</Message>
       ) : userInfo && entryList ? (
         <div className='entry-list-container'>
-          <h2>All Notes</h2>
+          <h2 className='entry-list-title'>All Notes</h2>
           {entries.map((entry) => (
             <Entry entry={entry} key={entry._id} />
           ))}
