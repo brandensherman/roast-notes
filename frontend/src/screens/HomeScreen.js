@@ -26,7 +26,7 @@ const HomeScreen = () => {
         <Message> {error}</Message>
       ) : userInfo && entryList ? (
         <div className='entry-list-container'>
-          <h2 className='entry-list-title'>All Notes</h2>
+          <h2 className='entry-list-title'>All Entries</h2>
           {entries.map((entry) => (
             <Entry entry={entry} key={entry._id} />
           ))}

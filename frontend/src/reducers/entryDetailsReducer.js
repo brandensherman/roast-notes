@@ -10,7 +10,7 @@ export const fetchEntryDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: ENTRY_DETAILS_REQUEST });
 
-    const { data } = await axios.get(`/api//user/entries/${id}`);
+    const { data } = await axios.get(`/api/user/entries/${id}`);
 
     dispatch({
       type: ENTRY_DETAILS_SUCCESS,

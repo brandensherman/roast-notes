@@ -69,9 +69,10 @@ a {
   font-size: 1.1rem;
   border-bottom: 2px transparent solid;
   transition: border-color 0.5s;
+  margin-right: 1rem;
 }
 .nav-item:last-child {
-  margin-left: 1rem;
+  margin-right: 0;
 }
 
 .nav-item:hover {
@@ -110,23 +111,20 @@ a {
 /* ALL ENTRIES - HOME SCREEN */
 
 .entry-container {
-  border-bottom: 1px solid #000;
-  padding-top: 1rem;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  padding: 1.5rem 2rem;
+  margin-bottom: 1rem;
   width: 500px;
 }
 
 .entry-row {
   display: flex;
   justify-content: space-between;
-  padding: 0 1rem;
 }
 
 .entry-list-title {
   margin: 1rem 0;
-}
-
-.entry-row-last {
-  margin-bottom: 1rem;
 }
 
 .entry-link {

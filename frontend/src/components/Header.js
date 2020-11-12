@@ -22,6 +22,12 @@ const Header = () => {
       <div className='nav-links'>
         {userInfo ? (
           <>
+            <Link to='/' className='nav-item'>
+              All Entries
+            </Link>
+            <Link to='/create' className='nav-item'>
+              Create Entry
+            </Link>
             <Link to='/' className='nav-item' onClick={logoutHandler}>
               Logout
             </Link>
