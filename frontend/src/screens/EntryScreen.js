@@ -1,7 +1,10 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { fetchEntryDetails } from '../reducers/entryDetailsReducer';
+import {
+  fetchEntryDetails,
+  deleteEntry,
+} from '../reducers/entryDetailsReducer';
 
 const EntryScreen = ({ match }) => {
   const dispatch = useDispatch();
@@ -22,6 +25,10 @@ const EntryScreen = ({ match }) => {
   useEffect(() => {
     dispatch(fetchEntryDetails(match.params.id));
   }, [dispatch, match]);
+
+  const handleDelete = () => {
+    dispatch(deleteEntry(match.params.id));
+  };
 
   return (
     <div className='container'>
@@ -46,9 +53,16 @@ const EntryScreen = ({ match }) => {
           <strong>Rating:</strong> {rating}
         </p>
 
-        <Link to='/'>
-          <div className='btn btn-back'>Go Back</div>
-        </Link>
+        <div className='entry-buttons'>
+          <Link to='/'>
+            <div className='btn btn-back btn-delete' onClick={handleDelete}>
+              Delete
+            </div>
+          </Link>
+          <Link to='/'>
+            <div className='btn btn-back'>Go Back</div>
+          </Link>
+        </div>
       </div>
     </div>
   );

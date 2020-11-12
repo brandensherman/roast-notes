@@ -1,7 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
 
 :root {
-  --primary-color: #fed9b7;
+  --primary: #fed9b7;
+  --red: #ff0016;
+  --grey: #f1f1f1;
 }
 
 * {
@@ -54,10 +56,21 @@ a {
   display: inline;
 }
 
+.btn-delete {
+  color: var(--red);
+  border: 2px solid var(--red);
+  margin-right: 1rem;
+}
+
+.btn-delete:hover {
+  background-color: var(--red);
+  color: #fff;
+}
+
 /* NAVBAR */
 
 .nav-container {
-  background-color: var(--primary-color);
+  background-color: var(--primary);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -86,7 +99,11 @@ a {
 }
 
 .form-container {
-  padding: 6rem 6rem;
+  padding: 3rem 6rem;
+}
+
+.form-title {
+  margin-bottom: 1rem;
 }
 
 .form-item {
@@ -97,7 +114,7 @@ a {
 }
 
 .form-item input {
-  background-color: #f1f1f1;
+  background-color: var(--grey);
   border: none;
   padding: 12px 15px;
   margin: 8px 0;
@@ -108,10 +125,20 @@ a {
   outline: none;
 }
 
+.form-item textarea {
+  font-family: 'Source Sans Pro';
+  font-size: 0.9rem;
+  background-color: var(--grey);
+  border: none;
+  padding: 6px 10px;
+  height: 60px;
+  resize: none;
+}
+
 /* ALL ENTRIES - HOME SCREEN */
 
 .entry-container {
-  background-color: #f1f1f1;
+  background-color: var(--grey);
   border-radius: 5px;
   padding: 1.5rem 2rem;
   margin-bottom: 1rem;
@@ -139,10 +166,14 @@ a {
 /* ENTRY SCREEN */
 .entry-screen-container {
   margin: 2rem 0;
-  width: 600px;
+  width: 500px;
 }
 
 .entry-screen-container p,
 h3 {
   margin-bottom: 1rem;
+}
+
+.entry-buttons {
+  padding-top: 1rem;
 }

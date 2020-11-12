@@ -37,6 +37,7 @@ const CreateEntry = ({ location, history }) => {
   return (
     <div className='auth-container'>
       <form className='form-container' onSubmit={handleSubmit}>
+        <h2 className='form-title'>New Entry</h2>
         <div className='form-item'>
           <label htmlFor='name'>Name</label>
           <input
