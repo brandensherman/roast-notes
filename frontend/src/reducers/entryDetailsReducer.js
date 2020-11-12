@@ -37,9 +37,11 @@ export const deleteEntry = (id) => async (dispatch) => {
 
     const { data } = await axios.delete(`/api/user/entries/${id}`);
 
-    dispatch({
-      type: ENTRY_DELETE_SUCCESS,
-    });
+    if (data) {
+      dispatch({
+        type: ENTRY_DELETE_SUCCESS,
+      });
+    }
   } catch (error) {
     // check for custom error message
     dispatch({

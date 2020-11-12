@@ -177,3 +177,21 @@ h3 {
 .entry-buttons {
   padding-top: 1rem;
 }
+
+/* HOME */
+
+.home-container {
+  margin: 2rem 0;
+  text-align: center;
+  width: 500px;
+}
+
+.home-container h2 {
+  margin-bottom: 0.5rem;
+  font-size: 2.4rem;
+}
+
+.home-description {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}

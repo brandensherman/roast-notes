@@ -6,6 +6,7 @@ import LoginScreen from './screens/LoginScreen';
 import RegisterScreen from './screens/RegisterScreen';
 import EntryScreen from './screens/EntryScreen';
 import CreateEntryScreen from './screens/CreateEntryScreen';
+import SampleEntryScreen from './screens/SampleEntryScreen';
 
 function App() {
   return (
@@ -15,6 +16,8 @@ function App() {
         <Route exact path='/' component={HomeScreen} />
         <Route exact path='/login' component={LoginScreen} />
         <Route exact path='/register' component={RegisterScreen} />
+        <Route exact path='/sample/0' component={SampleEntryScreen} />
+
         <Route path='/entry/:id' component={EntryScreen} />
         <Route path='/create' component={CreateEntryScreen} />
       </div>

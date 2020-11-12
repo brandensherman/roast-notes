@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+
 import { register } from '../reducers/userAuthReducer';
+import Loader from '../components/Loader';
+import Message from '../components/Message';
 
 const RegisterScreen = ({ location, history }) => {
   const [name, setName] = useState('');
@@ -34,52 +36,58 @@ const RegisterScreen = ({ location, history }) => {
 
   return (
     <div className='auth-container'>
-      <form className='form-container' onSubmit={handleSubmit}>
-        <div className='form-item'>
-          <label htmlFor='name'>Name</label>
-          <input
-            type='text'
-            name='name'
-            placeholder='Enter name'
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-        </div>
-        <div className='form-item'>
-          <label htmlFor='email'>Email</label>
-          <input
-            type='email'
-            name='email'
-            placeholder='Enter email'
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
-        <div className='form-item'>
-          <label htmlFor='password'>Password</label>
-          <input
-            type='password'
-            name='password'
-            placeholder='Enter password'
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        <div className='form-item'>
-          <label htmlFor='confirmPassword'>Confirm Password</label>
-          <input
-            type='password'
-            name='confirmPassword'
-            placeholder='Confirm password'
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-          />
-        </div>
+      {loading ? (
+        <Loader />
+      ) : error ? (
+        <Message> {error}</Message>
+      ) : (
+        <form className='form-container' onSubmit={handleSubmit}>
+          <div className='form-item'>
+            <label htmlFor='name'>Name</label>
+            <input
+              type='text'
+              name='name'
+              placeholder='Enter name'
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+          <div className='form-item'>
+            <label htmlFor='email'>Email</label>
+            <input
+              type='email'
+              name='email'
+              placeholder='Enter email'
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+          <div className='form-item'>
+            <label htmlFor='password'>Password</label>
+            <input
+              type='password'
+              name='password'
+              placeholder='Enter password'
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+          <div className='form-item'>
+            <label htmlFor='confirmPassword'>Confirm Password</label>
+            <input
+              type='password'
+              name='confirmPassword'
+              placeholder='Confirm password'
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+            />
+          </div>
 
-        <button className='btn btn-submit' type='submit'>
-          Register
-        </button>
-      </form>
+          <button className='btn btn-submit' type='submit'>
+            Register
+          </button>
+        </form>
+      )}
     </div>
   );
 };

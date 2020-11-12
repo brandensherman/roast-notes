@@ -1,15 +1,10 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
+
 import { Link } from 'react-router-dom';
-import {
-  fetchEntryDetails,
-  deleteEntry,
-} from '../reducers/entryDetailsReducer';
+import sampleEntries from '../data/sampleEntries';
 
-const EntryScreen = ({ match }) => {
-  const dispatch = useDispatch();
-
-  const entryDetails = useSelector((state) => state.entryDetails);
+const SampleEntryScreen = () => {
+  let entry = sampleEntries[0];
 
   const {
     name,
@@ -19,16 +14,7 @@ const EntryScreen = ({ match }) => {
     varietal,
     brewMethod,
     rating,
-  } = entryDetails.entry;
-
-  useEffect(() => {
-    dispatch(fetchEntryDetails(match.params.id));
-  }, [dispatch, match]);
-
-  const handleDelete = () => {
-    dispatch(deleteEntry(match.params.id));
-  };
-
+  } = entry;
   return (
     <div className='container'>
       <div className='entry-screen-container'>
@@ -54,11 +40,6 @@ const EntryScreen = ({ match }) => {
 
         <div className='entry-buttons'>
           <Link to='/'>
-            <div className='btn btn-back btn-delete' onClick={handleDelete}>
-              Delete
-            </div>
-          </Link>
-          <Link to='/'>
             <div className='btn btn-back'>Go Back</div>
           </Link>
         </div>
@@ -67,4 +48,4 @@ const EntryScreen = ({ match }) => {
   );
 };
 
-export default EntryScreen;
+export default SampleEntryScreen;
