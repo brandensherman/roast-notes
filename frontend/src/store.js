@@ -1,6 +1,6 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
-import loggingMiddleware from 'redux-logger';
+// import loggingMiddleware from 'redux-logger';
 import { userAuthReducer } from './reducers/userAuthReducer';
 import { entryListReducer } from './reducers/entryListReducer';
 import { entryDetailsReducer } from './reducers/entryDetailsReducer';
@@ -19,7 +19,8 @@ const intitialState = {
   user: { userInfo: userInfoFromStorage },
 };
 
-const middleware = applyMiddleware(loggingMiddleware, thunkMiddleware);
+// loggingMiddleware
+const middleware = applyMiddleware(thunkMiddleware);
 
 const store = createStore(reducer, intitialState, middleware);
 
