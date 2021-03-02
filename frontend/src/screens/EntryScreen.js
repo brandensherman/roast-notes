@@ -1,15 +1,13 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import {
-  fetchEntryDetails,
-  deleteEntry,
-} from '../reducers/entryDetailsReducer';
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
+import { fetchEntryDetails } from '../reducers/entryDetailsReducer'
+// deleteEntry
 
 const EntryScreen = ({ match }) => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
-  const entryDetails = useSelector((state) => state.entryDetails);
+  const entryDetails = useSelector((state) => state.entryDetails)
 
   const {
     name,
@@ -19,15 +17,15 @@ const EntryScreen = ({ match }) => {
     varietal,
     brewMethod,
     rating,
-  } = entryDetails.entry;
+  } = entryDetails.entry
 
   useEffect(() => {
-    dispatch(fetchEntryDetails(match.params.id));
-  }, [dispatch, match]);
+    dispatch(fetchEntryDetails(match.params.id))
+  }, [dispatch, match])
 
-  const handleDelete = () => {
-    dispatch(deleteEntry(match.params.id));
-  };
+  // const handleDelete = () => {
+  //   dispatch(deleteEntry(match.params.id))
+  // }
 
   return (
     <div className='container'>
@@ -53,18 +51,18 @@ const EntryScreen = ({ match }) => {
         </p>
 
         <div className='entry-buttons'>
-          <Link to='/'>
+          {/* <Link to='/'>
             <div className='btn btn-back btn-delete' onClick={handleDelete}>
               Delete
             </div>
-          </Link>
+          </Link> */}
           <Link to='/'>
             <div className='btn btn-back'>Go Back</div>
           </Link>
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default EntryScreen;
+export default EntryScreen

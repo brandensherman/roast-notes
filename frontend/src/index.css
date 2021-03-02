@@ -1,9 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
 
 :root {
-  --primary: #fed9b7;
+  --primary-light: #e0e3ff;
+  --primary: #5263e4;
   --red: #ff0016;
-  --grey: #f1f1f1;
 }
 
 * {
@@ -13,7 +15,8 @@
 }
 
 body {
-  font-family: 'Source Sans Pro', sans-serif;
+  /* background-color: var(--primary-light); */
+  font-family: 'Nunito', sans-serif;
 }
 
 .container {
@@ -27,18 +30,14 @@ a {
   text-decoration: none;
 }
 
-.logo {
-  color: #000;
-  font-size: 2rem;
-}
-
 /* BUTTONS */
 .btn {
   cursor: pointer;
   padding: 0.4rem 1rem;
   border-radius: 5px;
-  border: 2px solid #222;
-  background-color: #fff;
+  border: 2px solid var(--primary);
+  color: #fff;
+  background-color: var(--primary);
   transition: all ease 0.3s;
 }
 
@@ -48,15 +47,15 @@ a {
 
 .btn-submit:hover,
 .btn-back:hover {
-  color: #fff;
-  background-color: #222;
+  background-color: #fff;
+  color: var(--primary);
 }
 
 .btn-back {
   display: inline;
 }
 
-.btn-delete {
+/* .btn-delete {
   color: var(--red);
   border: 2px solid var(--red);
   margin-right: 1rem;
@@ -65,20 +64,24 @@ a {
 .btn-delete:hover {
   background-color: var(--red);
   color: #fff;
-}
+} */
 
 /* NAVBAR */
 
 .nav-container {
-  background-color: var(--primary);
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 2rem 4rem;
 }
 
+.nav-logo {
+  color: var(--primary);
+  font-size: 1.75rem;
+}
+
 .nav-item {
-  color: #000;
+  color: var(--primary);
   font-size: 1.1rem;
   border-bottom: 2px transparent solid;
   transition: border-color 0.5s;
@@ -89,7 +92,7 @@ a {
 }
 
 .nav-item:hover {
-  border-color: #000;
+  border-color: var(--primary);
 }
 
 /* FORMS */
@@ -99,7 +102,12 @@ a {
 }
 
 .form-container {
-  padding: 3rem 6rem;
+  display: flex;
+  flex-direction: column;
+  padding: 3rem 4rem;
+  border: 1px solid var(--primary-light);
+  border-radius: 5px;
+  color: var(--primary);
 }
 
 .form-title {
@@ -114,8 +122,8 @@ a {
 }
 
 .form-item input {
-  background-color: var(--grey);
-  border: none;
+  border: 1px solid var(--primary-light);
+  border-radius: 5px;
   padding: 12px 15px;
   margin: 8px 0;
   width: 100%;
@@ -128,8 +136,9 @@ a {
 .form-item textarea {
   font-family: 'Source Sans Pro';
   font-size: 0.9rem;
-  background-color: var(--grey);
-  border: none;
+  background-color: #fff;
+  border: 1px solid var(--primary-light);
+  border-radius: 5px;
   padding: 6px 10px;
   height: 60px;
   resize: none;
@@ -138,8 +147,9 @@ a {
 /* ALL ENTRIES - HOME SCREEN */
 
 .entry-container {
-  background-color: var(--grey);
+  border: 1px solid var(--primary-light);
   border-radius: 5px;
+  color: var(--primary);
   padding: 1.5rem 2rem;
   margin-bottom: 1rem;
   width: 500px;
@@ -151,21 +161,27 @@ a {
 }
 
 .entry-list-title {
+  color: var(--primary);
   margin: 1rem 0;
 }
 
 .entry-link {
+  color: var(--primary);
   border-bottom: 2px transparent solid;
   transition: border-color 0.5s;
 }
 
 .entry-link:hover {
-  border-color: #000;
+  border-color: var(--primary);
 }
 
 /* ENTRY SCREEN */
 .entry-screen-container {
-  margin: 2rem 0;
+  border: 1px solid var(--primary-light);
+  border-radius: 5px;
+  color: var(--primary);
+  padding: 1.5rem 2rem;
+  margin-bottom: 1rem;
   width: 500px;
 }
 
@@ -183,15 +199,18 @@ h3 {
 .home-container {
   margin: 2rem 0;
   text-align: center;
-  width: 500px;
+  padding: 2rem 3rem;
+  width: 600px;
 }
 
 .home-container h2 {
+  color: var(--primary);
   margin-bottom: 0.5rem;
   font-size: 2.4rem;
 }
 
 .home-description {
+  color: var(--primary);
   font-size: 1.2rem;
   margin-bottom: 2rem;
 }

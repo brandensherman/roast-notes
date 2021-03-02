@@ -1,38 +1,38 @@
-import axios from 'axios';
+import axios from 'axios'
 
-const USER_LOGIN_REQUEST = 'USER_LOGIN_REQUEST';
-const USER_LOGIN_SUCCESS = 'USER_LOGIN_SUCCESS';
-const USER_LOGIN_FAIL = 'USER_LOGIN_FAIL';
-const USER_LOGOUT = 'USER_LOGOUT';
+const USER_LOGIN_REQUEST = 'USER_LOGIN_REQUEST'
+const USER_LOGIN_SUCCESS = 'USER_LOGIN_SUCCESS'
+const USER_LOGIN_FAIL = 'USER_LOGIN_FAIL'
+const USER_LOGOUT = 'USER_LOGOUT'
 
-const USER_REGISTER_REQUEST = 'USER_REGISTER_REQUEST';
-const USER_REGISTER_SUCCESS = 'USER_REGISTER_SUCCESS';
-const USER_REGISTER_FAIL = 'USER_REGISTER_FAIL';
+const USER_REGISTER_REQUEST = 'USER_REGISTER_REQUEST'
+const USER_REGISTER_SUCCESS = 'USER_REGISTER_SUCCESS'
+const USER_REGISTER_FAIL = 'USER_REGISTER_FAIL'
 
 const config = {
   headers: {
     'Content-Type': 'application/json',
   },
-};
+}
 
 export const login = (email, password) => async (dispatch) => {
   try {
     dispatch({
       type: USER_LOGIN_REQUEST,
-    });
+    })
 
     const { data } = await axios.post(
       '/api/auth/login',
       { email, password },
       config
-    );
+    )
 
     dispatch({
       type: USER_LOGIN_SUCCESS,
       payload: data,
-    });
+    })
 
-    localStorage.setItem('userInfo', JSON.stringify(data));
+    localStorage.setItem('userInfo', JSON.stringify(data))
   } catch (error) {
     dispatch({
       type: USER_LOGIN_FAIL,
@@ -40,33 +40,33 @@ export const login = (email, password) => async (dispatch) => {
         error.response && error.response.data.message
           ? error.response.data.message
           : error.message,
-    });
+    })
   }
-};
+}
 
 export const register = (name, email, password) => async (dispatch) => {
   try {
     dispatch({
       type: USER_REGISTER_REQUEST,
-    });
+    })
 
     const { data } = await axios.post(
       '/api/auth/register',
       { name, email, password },
       config
-    );
+    )
 
     dispatch({
       type: USER_REGISTER_SUCCESS,
       payload: data,
-    });
+    })
 
     dispatch({
       type: USER_LOGIN_SUCCESS,
       payload: data,
-    });
+    })
 
-    localStorage.setItem('userInfo', JSON.stringify(data));
+    localStorage.setItem('userInfo', JSON.stringify(data))
   } catch (error) {
     dispatch({
       type: USER_REGISTER_FAIL,
@@ -74,35 +74,36 @@ export const register = (name, email, password) => async (dispatch) => {
         error.response && error.response.data.message
           ? error.response.data.message
           : error.message,
-    });
+    })
   }
-};
+}
 
 export const logout = () => async (dispatch) => {
-  localStorage.removeItem('userInfo');
-  dispatch({ type: USER_LOGOUT });
-};
+  await axios.get('/api/auth/logout', config)
+  localStorage.removeItem('userInfo')
+  dispatch({ type: USER_LOGOUT })
+}
 
 // User Reducer
 export const userAuthReducer = (state = {}, action) => {
   switch (action.type) {
     case USER_LOGIN_REQUEST:
-      return { loading: true, ...state };
+      return { loading: true, ...state }
     case USER_LOGIN_SUCCESS:
-      return { loading: false, userInfo: action.payload };
+      return { loading: false, userInfo: action.payload }
     case USER_LOGIN_FAIL:
-      return { loading: false, error: action.payload };
+      return { loading: false, error: action.payload }
 
     case USER_REGISTER_REQUEST:
-      return { loading: true, ...state };
+      return { loading: true, ...state }
     case USER_REGISTER_SUCCESS:
-      return { loading: false, userInfo: action.payload };
+      return { loading: false, userInfo: action.payload }
     case USER_REGISTER_FAIL:
-      return { loading: false, error: action.payload };
+      return { loading: false, error: action.payload }
 
     case USER_LOGOUT:
-      return {};
+      return {}
     default:
-      return state;
+      return state
   }
-};
+}

@@ -33,7 +33,7 @@ const EntrySchema = new mongoose.Schema({
     default: Date.now,
   },
   user: {
-    type: mongoose.Schema.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
     required: true,
   },

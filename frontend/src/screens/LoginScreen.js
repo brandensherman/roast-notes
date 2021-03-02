@@ -1,30 +1,30 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { login } from '../reducers/userAuthReducer';
-import Loader from '../components/Loader';
-import Message from '../components/Message';
+import React, { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { login } from '../reducers/userAuthReducer'
+import Loader from '../components/Loader'
+import Message from '../components/Message'
 
 const LoginScreen = ({ location, history }) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const redirect = location.search ? location.search.split('=')[1] : '/';
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const redirect = location.search ? location.search.split('=')[1] : '/'
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
-  const userLogin = useSelector((state) => state.user);
-  const { loading, error, userInfo } = userLogin;
+  const userLogin = useSelector((state) => state.user)
+  const { loading, error, userInfo } = userLogin
 
   useEffect(() => {
     if (userInfo) {
-      history.push(redirect);
+      history.push(redirect)
     }
-  }, [history, userInfo, redirect]);
+  }, [history, userInfo, redirect])
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
-    dispatch(login(email, password));
-  };
+    dispatch(login(email, password))
+  }
 
   return (
     <div className='auth-container'>
@@ -61,7 +61,7 @@ const LoginScreen = ({ location, history }) => {
         </form>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default LoginScreen;
+export default LoginScreen

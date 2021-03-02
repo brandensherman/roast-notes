@@ -1,22 +1,22 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { logout } from '../reducers/userAuthReducer';
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { logout } from '../reducers/userAuthReducer'
 
-const Header = () => {
-  const dispatch = useDispatch();
+const Navbar = () => {
+  const dispatch = useDispatch()
 
-  const user = useSelector((state) => state.user);
-  const { userInfo } = user;
+  const user = useSelector((state) => state.user)
+  const { userInfo } = user
 
   const logoutHandler = () => {
-    dispatch(logout());
-  };
+    dispatch(logout())
+  }
 
   return (
     <nav className='nav-container'>
       <Link to='/'>
-        <h1 className='logo'>Roast Notes</h1>
+        <h1 className='nav-logo'>Roast Notes</h1>
       </Link>
 
       <div className='nav-links'>
@@ -44,7 +44,7 @@ const Header = () => {
         )}
       </div>
     </nav>
-  );
-};
+  )
+}
 
-export default Header;
+export default Navbar
