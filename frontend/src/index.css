@@ -144,6 +144,14 @@ a {
   resize: none;
 }
 
+.radio-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.radio-item {
+}
+
 /* ALL ENTRIES - HOME SCREEN */
 
 .entry-container {

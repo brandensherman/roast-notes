@@ -1,22 +1,22 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { createEntry } from '../reducers/entryListReducer';
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { createEntry } from '../reducers/entryListReducer'
 
 const CreateEntry = ({ location, history }) => {
-  const [name, setName] = useState('');
-  const [roaster, setRoaster] = useState('');
-  const [roastDate, setRoastDate] = useState('');
-  const [description, setDescription] = useState('');
-  const [brewMethod, setBrewMethod] = useState('');
-  const [varietal, setVarietal] = useState('');
-  const [rating, setRating] = useState('');
+  const [name, setName] = useState('')
+  const [roaster, setRoaster] = useState('')
+  const [roastDate, setRoastDate] = useState('')
+  const [description, setDescription] = useState('')
+  const [brewMethod, setBrewMethod] = useState('')
+  const [varietal, setVarietal] = useState('')
+  const [rating, setRating] = useState('')
 
-  const redirect = location.search ? location.search.split('=')[1] : '/';
+  const redirect = location.search ? location.search.split('=')[1] : '/'
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
     dispatch(
       createEntry({
@@ -28,10 +28,10 @@ const CreateEntry = ({ location, history }) => {
         varietal,
         rating,
       })
-    );
+    )
 
-    history.push(redirect);
-  };
+    history.push(redirect)
+  }
 
   return (
     <div className='auth-container'>
@@ -99,21 +99,60 @@ const CreateEntry = ({ location, history }) => {
         </div>
         <div className='form-item'>
           <label htmlFor='rating'>Rating</label>
-          <input
-            type='text'
-            name='rating'
-            placeholder='Enter rating'
-            value={rating}
-            onChange={(e) => setRating(e.target.value)}
-          />
+          <div className='radio-container'>
+            <div className='radio-input'>
+              <input
+                type='radio'
+                name='rating'
+                value={1}
+                onChange={(e) => setRating(e.target.value)}
+              />
+              <label>1</label>
+            </div>
+            <div className='radio-input'>
+              <input
+                type='radio'
+                name='rating'
+                value={2}
+                onChange={(e) => setRating(e.target.value)}
+              />
+              <label>2</label>
+            </div>
+            <div className='radio-input'>
+              <input
+                type='radio'
+                name='rating'
+                value={3}
+                onChange={(e) => setRating(e.target.value)}
+              />
+              <label>3</label>
+            </div>
+            <div className='radio-input'>
+              <input
+                type='radio'
+                name='rating'
+                value={4}
+                onChange={(e) => setRating(e.target.value)}
+              />
+              <label>4</label>
+            </div>
+            <div className='radio-input'>
+              <input
+                type='radio'
+                name='rating'
+                value={5}
+                onChange={(e) => setRating(e.target.value)}
+              />
+              <label>5</label>
+            </div>
+          </div>
         </div>
-
         <button className='btn btn-submit' type='submit'>
           Create Entry
         </button>
       </form>
     </div>
-  );
-};
+  )
+}
 
-export default CreateEntry;
+export default CreateEntry

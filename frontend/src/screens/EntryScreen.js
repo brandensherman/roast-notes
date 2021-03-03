@@ -47,7 +47,7 @@ const EntryScreen = ({ match }) => {
           <strong>Brew Method:</strong> {brewMethod}
         </p>
         <p>
-          <strong>Rating:</strong> {rating}
+          <strong>Rating:</strong> {rating}/5
         </p>
 
         <div className='entry-buttons'>
